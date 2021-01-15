@@ -1,0 +1,56 @@
+IF [ INPUT != 1 ]
+THEN
+	DISPLAY "Error: Command needs input"
+	DISPLAY usage
+	EXIT 1
+END IF
+
+CASE [ currentInput ] IN
+	-F
+		PRINT "Enter fahrenheit"
+		READ fahrenheit
+
+		IF [ fahrenheit is numerical ]
+		THEN
+			CALCULATE celsius from fahrenheit
+			CALCULATE kelvin from fahrenheit
+		ELSE
+			PRINT "Error: Invalid input"
+			EXIT 2
+		END IF
+		PRINT "fahrenheit equals celsius and kelvin"
+NEXT CASE
+	-C
+		PRINT "Enter celsius"
+		READ celsius
+
+		IF [ celsius is numerical ]	
+		THEN
+			CALCULATE fahrenheit from celsius
+			CALCULATE kelvin from celsius
+		ELSE
+			PRINT "Error: Invalid input"
+			EXIT 3
+		END IF
+		PRINT "celsius equals fahrenheit and kelvin"
+NEXT CASE
+	-K
+		PRINT "Enter kelvin"
+		READ kelvin
+
+		IF [ kelvin is numerical ]
+		THEN
+			CALCULATE fahrenheit from kelvin
+			CALCULATE celsius from kelvin
+		ELSE
+			PRINT "Error: Invalid input"
+			EXIT 4
+		END IF
+		PRINT "kelvin equals fahrenheit and celsius"
+NEXT CASE
+	*
+		PRINT "Error: Invalid option"
+		PRINT usage
+		EXIT 5
+END CASE
+EXIT 0

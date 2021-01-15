@@ -1,0 +1,18 @@
+DECLARE regex
+
+IF [ INPUT < 1 ]
+THEN
+	DISPLAY "Error: Command needs input"
+	DISPLAY usage
+	EXIT 1
+END IF
+
+WHILE [ INPUT > 0 ]
+	IF [ currentInput conforms to regex ]
+	THEN
+		DISPLAY "currentInput is a valid email"
+	ELSE
+		DISPLAY "currentInput is not a valid email"
+	END IF
+DONE
+EXIT 0

@@ -1,0 +1,68 @@
+IF [ INPUT < 1 ]
+THEN
+	DISPLAY "Error: Command needs input"
+	DISPLAY usage
+	EXIT 1
+END IF
+
+DECLARE validInput
+DECLARE invalidInput
+DECLARE totalInput
+
+WHILE [ INPUT > 0 ]
+	IF [ currentInput = -1 ]
+	THEN
+		totalInput = validInput+invalidInput
+		DISPLAY "Control detected"
+		DISPLAY validInput
+		DISPLAY invalidInput
+		DISPLAY totalInput
+		EXIT 0
+
+	ELSE IF [ currentInput = -help ]
+	THEN
+		DISPLAY help
+		DISPLAY usage
+		EXIT 0
+
+	ELSE IF [ currentInput is not positive integer ]
+	THEN
+		DISPLAY "Error: Input not positive integer"
+		INCREMENT invalidInput
+
+	ELSE IF [ currentInput is positive integer ]
+	THEN
+		mod = currentInput MOD 7
+
+		IF [ mod = 0 ]
+		THEN PRINT "Sunday"
+		INCREMENT validInput
+		ELSE IF [ mod = 1 ]
+		THEN PRINT "Monday"
+		INCREMENT validInput
+		ELSE IF [ mod = 2 ]
+		THEN PRINT "Tuesday"
+		INCREMENT validInput
+		ELSE IF [ mod = 3 ]
+		THEN PRINT "Wednesday"
+		INCREMENT validInput
+		ELSE IF [ mod = 4 ]
+		THEN PRINT "Thursday"
+		INCREMENT validInput
+		ELSE IF [ mod = 5 ]
+		THEN PRINT "Friday"
+		INCREMENT validInput
+		ELSE IF [ mod = 6 ]
+		THEN PRINT "Saturday"
+		INCREMENT validInput
+		ELSE
+		PRINT "Unexpected Error"
+		INCREMENT invalidInput
+		END IF
+	ELSE
+	PRINT "Unexpected Error"
+	INCREMENT invalidInput
+	END IF
+DONE
+EXIT 0
+		
